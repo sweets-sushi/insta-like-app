@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<h2 class="user-name">@{{ user.username }}</h2>
+{% if photos.count != 0 %}
+  <p>投稿<strong>{{ photos.count }}</strong>件</p>
+{% else %}
+  {% if user == request.user %}
+    <p>初めての投稿をしてみましょう</p>
+<!-- 管理者の場合はTrue -->
+  {% else %}
+    <p>@{{ user.username }}</p>
+  {% endif %}
+{% endif %}
+<!--　ユーザーのもつ権限によって表示を切り替える -->
+{% include 'app/photos_list.html' %}
+{% endblock %}

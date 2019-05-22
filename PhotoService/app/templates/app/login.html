@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<form class="form-signin" method="post">{% csrf_token %}
+  {% if form.errors %}
+  <p>ユーザー名か名前が間違っています</p>
+  {% endif %}
+  {{ form.as_p }}
+  <input type="submit" value="ログイン">
+
+</form>
+
+{% endblock %}
